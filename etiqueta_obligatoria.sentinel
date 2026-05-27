@@ -1,0 +1,10 @@
+import "tfplan/v2" as tfplan
+
+# Regla principal: Todos los recursos deben tener la etiqueta 'Departamento'
+main = rule {
+    all tfplan.resource_changes as _, rc {
+        # Verificamos que el recurso tenga la etiqueta y que no esté vacía
+        rc.change.after.tags contains "Departamento" and 
+        rc.change.after.tags["Departamento"] != ""
+    }
+}
