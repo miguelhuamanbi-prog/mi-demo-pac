@@ -11,3 +11,5 @@ provider "null" {}
 
 resource "null_resource" "example" {
 }
+
+tags = { Departamento = "Ventas" }
